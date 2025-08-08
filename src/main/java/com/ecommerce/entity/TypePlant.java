@@ -9,18 +9,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="user")
-public class User {
+@Table(name="typeplant")
+public class TypePlant {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private UUID id;
 	
-	private String name; 
-	
-	private String mail;
-	
-	private String password;
+	private String name;
 
 	public UUID getId() {
 		return id;
@@ -36,22 +32,6 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	
 	

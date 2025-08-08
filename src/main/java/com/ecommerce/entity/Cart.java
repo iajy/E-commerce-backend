@@ -6,21 +6,24 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="user")
-public class User {
-
+@Table(name="cart")
+public class Cart {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private UUID id;
 	
-	private String name; 
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
-	private String mail;
-	
-	private String password;
+	@ManyToOne
+	@JoinColumn(name="plant_id")
+	private Plant plant;
 
 	public UUID getId() {
 		return id;
@@ -30,29 +33,22 @@ public class User {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public User getUser() {
+		return user;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public String getMail() {
-		return mail;
+	public Plant getPlant() {
+		return plant;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPlant(Plant plant) {
+		this.plant = plant;
 	}
 	
 	
+
 }
