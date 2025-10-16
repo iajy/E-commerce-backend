@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.entity.User;
 import com.ecommerce.repository.CartRepo;
+import com.ecommerce.repository.ImageRepo;
 import com.ecommerce.repository.PlantRepo;
 import com.ecommerce.repository.TypeRepo;
 import com.ecommerce.repository.UserRepo;
@@ -34,6 +35,9 @@ public class ECommerceController {
 //	@Autowired
 //	private TypeRepo typeRepo;
 //	
+//	@Autowired
+//	private ImageRepo imageRepo;
+	
 	@PostMapping("/saveuser")
 	public ResponseEntity<?> registerUser(@RequestBody User user) {
 

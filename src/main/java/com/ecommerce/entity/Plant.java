@@ -21,9 +21,15 @@ public class Plant {
 	
 	private double prize;
 	
+	private double offer;
+	
 	@ManyToOne
 	@JoinColumn(name="typeplant_id")
 	private TypePlant typePlant;
+	
+	@ManyToOne
+	@JoinColumn(name="image_id")
+	private Image image;
 
 	public int getId() {
 		return id;
@@ -56,6 +62,24 @@ public class Plant {
 	public void setTypePlant(TypePlant typePlant) {
 		this.typePlant = typePlant;
 	}
+
+	public double getOffer() {
+		return offer;
+	}
+
+	public void setOffer(double offer) {
+		this.offer = offer;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+	
+	
 	
 	
 	
