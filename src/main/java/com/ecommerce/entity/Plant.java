@@ -1,11 +1,12 @@
 package com.ecommerce.entity;
 
-import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,19 +15,21 @@ public class Plant {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private UUID id;
+	private int id;
 	
 	private String plantName;
 	
 	private double prize;
 	
+	@ManyToOne
+	@JoinColumn(name="typeplant_id")
 	private TypePlant typePlant;
 
-	public UUID getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

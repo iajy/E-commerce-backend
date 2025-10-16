@@ -1,6 +1,5 @@
 package com.ecommerce.entity;
 
-import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +14,7 @@ import jakarta.persistence.Table;
 public class Cart {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private UUID id;
+	private int id;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -25,11 +24,11 @@ public class Cart {
 	@JoinColumn(name="plant_id")
 	private Plant plant;
 
-	public UUID getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -1,7 +1,5 @@
 package com.ecommerce.entity;
 
-import java.util.UUID;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,15 +12,15 @@ public class TypePlant {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private UUID id;
+	private int id;
 	
 	private String name;
 
-	public UUID getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
