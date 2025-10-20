@@ -10,5 +10,5 @@ public interface AddressRepo extends JpaRepository<Address, Integer> {
  
 	public int countByUserId(int userId);
 	
-	public List<Address> findByUserId(int useId);
+	public List<Address> findByUserId(int userId);
 }
