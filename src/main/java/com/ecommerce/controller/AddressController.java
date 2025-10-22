@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.ecommerce.entity.Address;
@@ -20,9 +21,9 @@ public class AddressController {
 	@Autowired
 	public AddressService addressService;
 
-	@PostMapping("editaddress/{id}")
-	public ResponseEntity<String> editAddress(@RequestBody Address updatedAddress, @PathVariable int id) {
-		return addressService.editAddress(id, updatedAddress);
+	@PostMapping("saveaddress/{id}")
+	public ResponseEntity<String> saveAddress(@RequestBody Address updatedAddress, @PathVariable int id) {
+		return addressService.saveAddress(id, updatedAddress);
 	}
 
 	@DeleteMapping("deleteaddress/{id}")
@@ -35,6 +36,13 @@ public class AddressController {
 	public ResponseEntity<List<Address>> getAddress(@PathVariable int id){
 		List<Address> addreses = addressService.getAddress(id);
 		return ResponseEntity.ok().body(addreses);
+	}
+	
+	@PutMapping("/editaddress/{id}")
+	public ResponseEntity<String> editAddress(@PathVariable int id,@RequestBody Address address){
+		
+		return addressService.editAddres(id, address);
+		
 	}
 
 }
