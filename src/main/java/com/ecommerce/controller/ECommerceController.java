@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecommerce.config.JwtUtil;
 import com.ecommerce.entity.User;
 import com.ecommerce.repository.UserRepo;
+import com.ecommerce.service.UserService;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -28,6 +28,9 @@ public class ECommerceController {
 
 	@Autowired
 	private JwtUtil jwtUtil;
+
+	@Autowired
+	private UserService userService;
 
 	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -73,6 +76,21 @@ public class ECommerceController {
 		res.put("user", user);
 		return res;
 
+	}
+
+	@PostMapping("/reset-password")
+	public ResponseEntity<?> resetPassword(@RequestBody Map<String, String> request) {
+		String token = request.get("token");
+		String newPassword = request.get("newPassword");
+		return ResponseEntity.ok().body(userService.resetPassword(token, newPassword));
+
+	}
+
+	@PostMapping("/forgot-password")
+	public ResponseEntity<String> forgotPassword(@RequestBody Map<String, String> request) {
+		String mail = request.get("mail");
+		userService.sendResetLink(mail);
+		return ResponseEntity.ok("Reset link sent to your email");
 	}
 
 }

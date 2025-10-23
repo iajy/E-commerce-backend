@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,6 +21,8 @@ public class User {
 	private String mail;
 	
 	private String password;
+	
+	private String resetToken;
 	
 
 	public int getId() {
@@ -56,6 +56,18 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getResetToken() {
+		return resetToken;
+	}
+
+	public void setResetToken(String resetToken) {
+		this.resetToken = resetToken;
+	}
+	
+	
+
+	
 	
 	
 

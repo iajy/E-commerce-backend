@@ -9,5 +9,7 @@ import com.ecommerce.entity.User;
 public interface UserRepo extends JpaRepository<User, Integer> {
 
 	Optional<User> findByMail(String mail);
+    Optional<User> findByResetToken(String token);
+
 
 }
